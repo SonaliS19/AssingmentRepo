@@ -1,6 +1,7 @@
 const ListModel = require("../model/listSchema");
 
 const saveList = async (req, res) => {
+    
     const { name, id, items } = req.body;
 
     const list = await ListModel.create({
@@ -68,5 +69,6 @@ const updateList = async (req, res) => {
 
     res.status(200).json({ status: "success", data: {} });
 };
+
 
 module.exports = { saveList, fetchList, deleteList, updateList };

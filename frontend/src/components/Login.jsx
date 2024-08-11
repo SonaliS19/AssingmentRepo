@@ -3,10 +3,12 @@ import { Input } from "./ui/input";
 import axiosInstance from "@/axiosInstance";
 import toast from "react-hot-toast";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigation = useNavigate();
 
   const handleLogin = async () => {
     try {
@@ -18,6 +20,7 @@ const Login = ({ setUser }) => {
         setUser(response.data);
         localStorage.setItem("user", JSON.stringify(response.data));
         toast.success("Login Successful");
+        navigation("/");
       } else {
         toast.error("Login Failed");
       }

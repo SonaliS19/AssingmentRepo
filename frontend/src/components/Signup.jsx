@@ -3,11 +3,13 @@ import { Input } from "./ui/input"; // Import ShadCN Input component
 import axiosInstance from "@/axiosInstance";
 import toast from "react-hot-toast";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Signup = ({ setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigation = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -24,6 +26,7 @@ const Signup = ({ setUser }) => {
         setUser(response.data);
         localStorage.setItem("user", JSON.stringify(response.data));
         toast.success("Signup Successful");
+        navigation("/");
       }
       setLoading(false);
     } catch (error) {

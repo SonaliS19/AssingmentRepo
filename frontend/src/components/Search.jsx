@@ -32,6 +32,7 @@ const Search = () => {
       setQuery(value);
     }
 
+    // regex for searching
     if (value && value !== "x") {
       const regexPattern = value.replace(/x/g, "\\d");
       const regex = new RegExp(`^${regexPattern}`, "i");
